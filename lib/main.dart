@@ -1,5 +1,14 @@
+import 'package:easyclick1/view/cart_page.dart';
 import 'package:easyclick1/view/email_mobile_page.dart';
+import 'package:easyclick1/view/home_page.dart';
+import 'package:easyclick1/view/mobilesignup_view.dart';
+import 'package:easyclick1/view/otp_Verification_page.dart';
+import 'package:easyclick1/view/search_page.dart';
+import 'package:easyclick1/view/service_listing.dart';
+import 'package:easyclick1/view/sub_catagories.dart';
+import 'package:easyclick1/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -14,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveSizer(
       builder: (p0, p1, p2) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'easyclic',
           theme: ThemeData(backgroundColor: Colors.white
@@ -29,7 +38,7 @@ class MyApp extends StatelessWidget {
               // is not restarted.
 
               ),
-          home: const EmailMobilePage(),
+          home: CartPage(),
         );
       },
     );

@@ -1,5 +1,7 @@
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:easyclick1/widgets/textButton.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class EmailMobilePage extends StatefulWidget {
@@ -12,6 +14,7 @@ class EmailMobilePage extends StatefulWidget {
 class _EmailMobilePageState extends State<EmailMobilePage> {
   final email = TextEditingController();
   final name = TextEditingController();
+  final mobilenumber = TextEditingController();
   bool selected = true;
   List<bool> _selections = List.generate(2, (_) => false);
 
@@ -50,20 +53,42 @@ class _EmailMobilePageState extends State<EmailMobilePage> {
                 height: 5.h,
               ),
               Container(
-                child: InternationalPhoneNumberInput(
-                  initialValue: PhoneNumber(isoCode: '+33', dialCode: '+33'),
-                  inputBorder: OutlineInputBorder(),
-                  searchBoxDecoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                height: 7.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(2.pt),
+                  color: Color(0XFFEEEEEE),
+                ),
+                child: Row(
+                  children: [
+                    CountryCodePicker(
+                      backgroundColor: Color(0XFFEEEEEE),
+                      padding: EdgeInsets.zero,
+                      initialSelection: "FR",
+                      favorite: ["+33", "FR"],
                     ),
-                  ),
-                  onInputChanged: (mobile) {},
-                  inputDecoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.pt),
+                    VerticalDivider(
+                      width: 0.1.w,
+                      indent: 1.h,
+                      endIndent: 1.h,
                     ),
-                  ),
+                    SizedBox(
+                      width: 1.w,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        controller: mobilenumber,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(hintText: 'MobileNumber', border: InputBorder.none),
+                      ),
+                    ),
+                    TextButtons(
+                      onpressed: () {},
+                      text: 'Modifier',
+                      color: Color(0XFF1F3C88),
+                      textStyle: TextStyle(fontSize: 15.sp),
+                    )
+                  ],
                 ),
               ),
               SizedBox(

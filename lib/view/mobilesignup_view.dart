@@ -1,6 +1,9 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+import '../widgets/textButton.dart';
 
 class MobileSignUpPage extends StatefulWidget {
   const MobileSignUpPage({Key? key}) : super(key: key);
@@ -46,16 +49,42 @@ class _MobileSignUpPageState extends State<MobileSignUpPage> {
                 height: 5.h,
               ),
               Container(
-                child: InternationalPhoneNumberInput(
-                  initialValue: PhoneNumber(isoCode: '+33', dialCode: '+33'),
-                  inputBorder: OutlineInputBorder(),
-                  searchBoxDecoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                height: 7.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(2.pt),
+                  color: Color(0XFFEEEEEE),
+                ),
+                child: Row(
+                  children: [
+                    CountryCodePicker(
+                      backgroundColor: Color(0XFFEEEEEE),
+                      padding: EdgeInsets.zero,
+                      initialSelection: "FR",
+                      favorite: ["+33", "FR"],
                     ),
-                  ),
-                  onInputChanged: (mobile) {},
-                  inputDecoration: InputDecoration(border: InputBorder.none),
+                    VerticalDivider(
+                      width: 0.1.w,
+                      indent: 1.h,
+                      endIndent: 1.h,
+                    ),
+                    SizedBox(
+                      width: 1.w,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        controller: mobilenumber,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(hintText: 'MobileNumber', border: InputBorder.none),
+                      ),
+                    ),
+                    TextButtons(
+                      onpressed: () {},
+                      text: 'Modifier',
+                      color: Color(0XFF1F3C88),
+                      textStyle: TextStyle(fontSize: 15.sp),
+                    )
+                  ],
                 ),
               ),
               SizedBox(

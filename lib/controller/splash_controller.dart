@@ -8,6 +8,6 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
-    Timer(Duration(seconds: 3), () => Get.offAll(() => WelcomeScreen()));
+    Timer(Duration(seconds: 3), () => Get.put(() => WelcomeScreen()));
   }
 }

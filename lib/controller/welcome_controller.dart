@@ -9,7 +9,7 @@ class WelcomeController extends GetxController {
   void onInit() {
     Timer(
       Duration(seconds: 3),
-      () => Get.offAll(MobileSignUpPage()),
+      () => Get.put(MobileSignUpPage()),
     );
     super.onInit();
   }
