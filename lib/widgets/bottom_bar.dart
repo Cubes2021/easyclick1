@@ -1,4 +1,7 @@
+import 'package:easyclick1/view/booking.dart';
+import 'package:easyclick1/view/booking_details.dart';
 import 'package:easyclick1/view/profile_page.dart';
+import 'package:easyclick1/view/review_page.dart';
 import 'package:easyclick1/view/search_page.dart';
 import 'package:easyclick1/view/service_listing.dart';
 import 'package:easyclick1/view/sub_catagories.dart';
@@ -12,8 +15,15 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   var BottomSelect = 0;
+  List<String> menu = ['Research', 'Booking', 'Profile'];
+  List<String> icon = ['assets/images/search.png', 'assets/images/notes.png', 'assets/images/Frame.png'];
 
-  List<Widget> Screen = [SearchPage(), SubCatagariesPage(), ProfilePage()];
+  List<Widget> Screen = [
+    SearchPage(),
+    BookingPage(),
+    ProfilePage(),
+    ReviewPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,18 +50,13 @@ class _BottomBarState extends State<BottomBar> {
                               BottomSelect = index;
                             },
                           );
-
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => Screen[index],
-                          //   ),
-                          // );
                         },
-                        icon: Image.asset('assets/images/search.png'),
+                        icon: Image.asset(
+                          icon[index],
+                        ),
                       ),
                       Text(
-                        'Recherche',
+                        menu[index],
                         style: TextStyle(
                           color: Color(0XFF1F3C88),
                         ),

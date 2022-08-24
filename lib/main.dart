@@ -1,4 +1,5 @@
 import 'package:easyclick1/view/booking.dart';
+import 'package:easyclick1/view/booking_details.dart';
 import 'package:easyclick1/view/cart_page.dart';
 import 'package:easyclick1/view/checkout_page.dart';
 import 'package:easyclick1/view/edit_profile.dart';
@@ -9,6 +10,7 @@ import 'package:easyclick1/view/otp_Verification_page.dart';
 import 'package:easyclick1/view/profile_page.dart';
 import 'package:easyclick1/view/review_page.dart';
 import 'package:easyclick1/view/search_page.dart';
+import 'package:easyclick1/view/service_description.dart';
 import 'package:easyclick1/view/service_listing.dart';
 import 'package:easyclick1/view/sub_catagories.dart';
 import 'package:easyclick1/view/time_slot.dart';
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
               // is not restarted.
 
               ),
-          home: ReviewPage(),
+          home: ServiceDescriptionPage(),
         );
       },
     );

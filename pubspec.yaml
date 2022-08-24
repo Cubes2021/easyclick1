@@ -41,6 +41,7 @@ dependencies:
   country_code_picker: ^2.0.2
   otp_text_field: ^1.1.3
   calendar_builder: ^0.0.6
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:
