@@ -1,8 +1,9 @@
+import 'package:easyclick1/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ReviewPage extends StatelessWidget {
-  const ReviewPage({Key? key}) : super(key: key);
+  final comments = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -131,6 +132,15 @@ class ReviewPage extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 1.h,
+                    ),
+                    Text('Vos Commentaires'),
+                    SizedBox(
+                      height: 1.5.h,
+                    ),
+                    CustomTextField(
+                      TextEditingController: comments,
+                      string: 'Commentaires',
+                      Height: 10.h,
                     ),
                   ],
                 ),
