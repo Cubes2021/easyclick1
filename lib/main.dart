@@ -1,4 +1,4 @@
-import 'package:easyclick1/view/email_mobile_page.dart';
+import 'package:easyclick1/view/review_page.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               // is not restarted.
 
               ),
-          home: const EmailMobilePage(),
+          home: ReviewPage(),
         );
       },
     );
