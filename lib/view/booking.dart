@@ -16,7 +16,7 @@ class BookingPage extends StatelessWidget {
             ),
             Text(
               'Mes Réservations',
-              style: TextStyle(color: Color(0XFF1F3C88), fontWeight: FontWeight.bold, fontSize: 20.sp),
+              style: TextStyle(color: Color(0XFFF8F8F8), fontWeight: FontWeight.bold, fontSize: 20.sp),
             ),
             Column(
               children: List.generate(
@@ -24,14 +24,31 @@ class BookingPage extends StatelessWidget {
                 (index) => Column(
                   children: [
                     Container(
-                      height: 6.h,
+                      height: 10.h,
                       width: double.infinity,
-                      color: Colors.grey,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Controle Antiparasitaire',
+                            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                          ),
+                          Text(
+                            'Ven 02 Juin 2021 à 11h30',
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                            ),
+                          ),
+                          CircleAvatar(
+                            radius: 5.5.pt,
+                            backgroundImage: AssetImage('assets/images/booking1.png'),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

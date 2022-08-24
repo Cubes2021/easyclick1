@@ -1,3 +1,4 @@
+import 'package:easyclick1/widgets/custom_button.dart';
 import 'package:easyclick1/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -142,6 +143,13 @@ class ReviewPage extends StatelessWidget {
                       string: 'Commentaires',
                       Height: 10.h,
                     ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    CustomButton(
+                      text: 'Envoyer',
+                      ontap: () {},
+                    )
                   ],
                 ),
               ),
