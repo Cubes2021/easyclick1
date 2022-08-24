@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  calendar_builder:
+    dependency: "direct main"
+    description:
+      name: calendar_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.6"
   characters:
     dependency: transitive
     description:

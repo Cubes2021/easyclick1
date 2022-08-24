@@ -81,10 +81,11 @@ class _HomePageState extends State<HomePage> {
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BottomBar(),
-                                  ));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BottomBar(),
+                                ),
+                              );
                             },
                             child: Container(
                               height: 20.h,

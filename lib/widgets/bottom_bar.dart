@@ -1,14 +1,19 @@
+import 'package:easyclick1/view/profile_page.dart';
 import 'package:easyclick1/view/search_page.dart';
+import 'package:easyclick1/view/service_listing.dart';
 import 'package:easyclick1/view/sub_catagories.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class BottomBar extends StatelessWidget {
-  BottomBar({this.onpressed});
-  final void Function()? onpressed;
+class BottomBar extends StatefulWidget {
+  @override
+  State<BottomBar> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
   var BottomSelect = 0;
 
-  List<Widget> Screen = [SearchPage(), SubCatagariesPage()];
+  List<Widget> Screen = [SearchPage(), SubCatagariesPage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -20,25 +25,63 @@ class BottomBar extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 6.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
+            children: List.generate(
+              3,
+              (index) => Column(
                 children: [
-                  IconButton(
-                    onPressed: onpressed,
-                    icon: Image.asset('assets/images/search.png'),
+                  Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          print(index);
+                          print('index');
+                          setState(
+                            () {
+                              BottomSelect = index;
+                            },
+                          );
+
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => Screen[index],
+                          //   ),
+                          // );
+                        },
+                        icon: Image.asset('assets/images/search.png'),
+                      ),
+                      Text(
+                        'Recherche',
+                        style: TextStyle(
+                          color: Color(0XFF1F3C88),
+                        ),
+                      )
+                    ],
                   ),
-                  Text(
-                    'Recherche',
-                    style: TextStyle(
-                      color: Color(0XFF1F3C88),
-                    ),
-                  )
                 ],
               ),
+            ),
+          ),
+        ),
+      ),
+      body: Screen[BottomSelect],
+    );
+  }
+}
+
+/*
+
               Column(
                 children: [
                   IconButton(
-                    onPressed: onpressed,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ServiceListingPage(),
+                        ),
+                      );
+                    },
                     icon: Image.asset('assets/images/notes.png'),
                   ),
                   Text(
@@ -52,7 +95,14 @@ class BottomBar extends StatelessWidget {
               Column(
                 children: [
                   IconButton(
-                    onPressed: onpressed,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfilePage(),
+                        ),
+                      );
+                    },
                     icon: Image.asset('assets/images/Frame.png'),
                   ),
                   Text(
@@ -63,11 +113,4 @@ class BottomBar extends StatelessWidget {
                   )
                 ],
               ),
-            ],
-          ),
-        ),
-      ),
-      body: Screen[BottomSelect],
-    );
-  }
-}
+ */

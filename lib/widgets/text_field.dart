@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({required this.TextEditingController, required this.string});
+  CustomTextField({required this.TextEditingController, required this.string, this.suffixIcon, this.suffixIconcolor, this.prefixIcon, this.prefixIconcolor, this.Height});
   final TextEditingController;
   final String? string;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final Color? prefixIconcolor;
+  final Color? suffixIconcolor;
+  final double? Height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 7.h,
+      height: Height,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2.pt),
@@ -17,12 +22,18 @@ class CustomTextField extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 1.w),
-        child: TextFormField(
-          controller: TextEditingController,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: string,
-            hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+        child: Center(
+          child: TextFormField(
+            controller: TextEditingController,
+            decoration: InputDecoration(
+              suffixIcon: suffixIcon,
+              prefixIcon: prefixIcon,
+              suffixIconColor: suffixIconcolor,
+              prefixIconColor: prefixIconcolor,
+              border: InputBorder.none,
+              hintText: string,
+              hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+            ),
           ),
         ),
       ),

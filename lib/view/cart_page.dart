@@ -1,4 +1,5 @@
 import 'package:easyclick1/controller/listing_controller.dart';
+import 'package:easyclick1/view/time_slot.dart';
 import 'package:easyclick1/widgets/custom_button.dart';
 import 'package:easyclick1/widgets/text_field.dart';
 import 'package:flutter/material.dart';
@@ -138,21 +139,23 @@ class _CartPageState extends State<CartPage> {
               SizedBox(
                 height: 2.h,
               ),
-              Container(
-                height: 4.h,
-                width: 20.w,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Color(0XFFE74C3C),
-                  ),
-                  color: Color(0XFFF1CDC9),
-                  borderRadius: BorderRadius.circular(2.pt),
-                ),
-                child: Center(
-                  child: Text(
-                    'Retirer',
-                    style: TextStyle(
+              GestureDetector(
+                child: Container(
+                  height: 4.h,
+                  width: 20.w,
+                  decoration: BoxDecoration(
+                    border: Border.all(
                       color: Color(0XFFE74C3C),
+                    ),
+                    color: Color(0XFFF1CDC9),
+                    borderRadius: BorderRadius.circular(2.pt),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Retirer',
+                      style: TextStyle(
+                        color: Color(0XFFE74C3C),
+                      ),
                     ),
                   ),
                 ),
@@ -195,51 +198,83 @@ class _CartPageState extends State<CartPage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(
-                      6,
-                      (index) => Column(
-                            children: [
-                              Stack(
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 1.w),
-                                    height: 12.h,
-                                    width: 25.w,
-                                    color: Colors.blue,
-                                  ),
-                                  Positioned(
-                                    top: 10.h,
-                                    left: 13.w,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0XFFEE6F57),
-                                        borderRadius: BorderRadius.circular(3.pt),
-                                      ),
-                                      margin: EdgeInsets.symmetric(horizontal: 1.w),
-                                      width: 10.w,
-                                      height: 5.h,
-                                      child: IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.add),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                    6,
+                    (index) => Column(
+                      children: [
+                        Stack(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 1.w),
+                              height: 20.h,
+                              width: 25.w,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(image: AssetImage('assets/images/service.png'), fit: BoxFit.cover),
                               ),
-                              Container(
+                            ),
+                            Positioned(
+                              bottom: -1.h,
+                              child: Container(
                                 margin: EdgeInsets.symmetric(horizontal: 1.w),
                                 height: 8.h,
                                 width: 25.w,
-                                color: Colors.black,
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 0.5.w),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Text(
+                                        '1 nettoyeur\nmatériels ...',
+                                        style: TextStyle(fontSize: 15.sp),
+                                      ),
+                                      Text('20€'),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ],
-                          )),
+                            ),
+                            Positioned(
+                              top: 10.h,
+                              left: 15.w,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0XFFEE6F57),
+                                  borderRadius: BorderRadius.circular(3.pt),
+                                ),
+                                margin: EdgeInsets.symmetric(horizontal: 1.w),
+                                width: 10.w,
+                                height: 5.h,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.add),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 2.h,
               ),
-              CustomButton(text: 'Payer')
+              CustomButton(
+                text: 'Payer',
+                ontap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TimeSlotPage(),
+                    ),
+                  );
+                },
+              )
             ],
           ),
         ),

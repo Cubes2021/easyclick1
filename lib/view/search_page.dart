@@ -27,9 +27,23 @@ class _SearchPageState extends State<SearchPage> {
                   Spacer(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: CustomTextField(
-                      TextEditingController: search,
-                      string: 'Ménage',
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                            prefixIcon: IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: Color(0XFFEE6F57),
+                                )),
+                            TextEditingController: search,
+                            string: 'Ménage',
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Spacer(),

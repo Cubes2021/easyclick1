@@ -30,7 +30,9 @@ class _ServiceListingPageState extends State<ServiceListingPage> {
               Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: Icon(
                       Icons.arrow_back,
                       color: Color(0XFFEE6F57),

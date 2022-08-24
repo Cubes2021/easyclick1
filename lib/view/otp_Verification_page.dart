@@ -1,3 +1,4 @@
+import 'package:easyclick1/view/home_page.dart';
 import 'package:easyclick1/widgets/custom_button.dart';
 import 'package:easyclick1/widgets/textButton.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +27,13 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
               Row(
                 children: [
                   IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Color(0XFFEE6F57),
-                        size: 20.sp,
-                      )),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Color(0XFFEE6F57),
+                      size: 20.sp,
+                    ),
+                  ),
                   Text(
                     'OTP',
                     style: TextStyle(color: Color(0XFF1F3C88), fontWeight: FontWeight.bold, fontSize: 17.sp),
@@ -85,6 +87,14 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
               ),
               CustomButton(
                 text: 'Verifier',
+                ontap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
+                },
               )
             ],
           ),
