@@ -19,6 +19,9 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 3.h,
+            ),
             Text(
               'De quel type de service\navez-vous besoin ?',
               style: TextStyle(

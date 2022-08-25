@@ -1,8 +1,12 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:easyclick1/view/otp_Verification_page.dart';
 import 'package:easyclick1/widgets/textButton.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+import '../controller/emailpage_controller.dart';
 
 class EmailMobilePage extends StatefulWidget {
   const EmailMobilePage({Key? key}) : super(key: key);
@@ -12,6 +16,7 @@ class EmailMobilePage extends StatefulWidget {
 }
 
 class _EmailMobilePageState extends State<EmailMobilePage> {
+  EmailPageController emailPageController = Get.put(EmailPageController());
   final email = TextEditingController();
   final name = TextEditingController();
   final mobilenumber = TextEditingController();
@@ -125,57 +130,73 @@ class _EmailMobilePageState extends State<EmailMobilePage> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 1.w),
-                  child: Row(
-                    children: [
-                      ToggleButtons(
-                        selectedColor: selected == false ? Colors.red : Colors.white,
-                        color: selected == true ? Colors.red : Colors.white,
-                        borderRadius: BorderRadius.circular(3.pt),
-                        children: <Widget>[
-                          Icon(Icons.boy_outlined),
-                          Icon(Icons.girl_outlined),
-                        ],
-                        isSelected: _selections,
-                        onPressed: (int index) {
-                          setState(
-                            () {
-                              _selections[index] = !_selections[index];
-                            },
-                          );
-                        },
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          controller: email,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Nom complet',
-                            hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+                  child: Row(children: [
+                    ToggleButtons(
+                      selectedColor: selected == false ? Colors.white : Color(0XFF1F3C88),
+                      color: selected == true ? Color(0XFF1F3C88) : Colors.white,
+                      borderRadius: BorderRadius.circular(3.pt),
+                      children: <Widget>[
+                        Text(
+                          'Mr.',
+                          style: TextStyle(
+                            color: selected == true ? Colors.white : Color(0XFF1F3C88),
                           ),
                         ),
-                      ),
-                    ],
+                        Text('Ms.'),
+                      ],
+                      isSelected: _selections,
+                      onPressed: (int index) {
+                        setState(
+                          () {
+                            setState(
+                              () {
+                                selected = !selected;
+                              },
+                            );
+                          },
+                        );
+                        Expanded(
+                          child: TextFormField(
+                            controller: email,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Nom complet',
+                              hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ]),
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  emailPageController.emailController();
+                },
+                child: Container(
+                  height: 7.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2.pt),
+                    color: Color(0XFFEE6F57),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Suivant',
+                      style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                    ),
                   ),
                 ),
               ),
               SizedBox(
                 height: 5.h,
               ),
-              Container(
-                height: 7.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2.pt),
-                  color: Color(0XFFEE6F57),
-                ),
-                child: Center(
-                  child: Text(
-                    'Suivant',
-                    style: TextStyle(color: Colors.white, fontSize: 20.sp),
-                  ),
-                ),
-              ),
-              Text("En poursuivant votre navigation sur l’application, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.")
+              Text(
+                  "En poursuivant votre navigation sur l’application, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.")
             ],
           ),
         ),

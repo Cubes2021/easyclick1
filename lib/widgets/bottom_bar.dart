@@ -32,7 +32,9 @@ class _BottomBarState extends State<BottomBar> {
         width: double.infinity,
         height: 8.h,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 6.w),
+          padding: EdgeInsets.symmetric(
+            horizontal: 4.w,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
@@ -73,49 +75,3 @@ class _BottomBarState extends State<BottomBar> {
     );
   }
 }
-
-/*
-
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ServiceListingPage(),
-                        ),
-                      );
-                    },
-                    icon: Image.asset('assets/images/notes.png'),
-                  ),
-                  Text(
-                    'Réservations',
-                    style: TextStyle(
-                      color: Color(0XFF1F3C88),
-                    ),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfilePage(),
-                        ),
-                      );
-                    },
-                    icon: Image.asset('assets/images/Frame.png'),
-                  ),
-                  Text(
-                    'Profil',
-                    style: TextStyle(
-                      color: Color(0XFF1F3C88),
-                    ),
-                  )
-                ],
-              ),
- */

@@ -1,6 +1,8 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:easyclick1/controller/mobilesignup_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:get/get.dart';
+
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../widgets/textButton.dart';
@@ -13,6 +15,9 @@ class MobileSignUpPage extends StatefulWidget {
 }
 
 class _MobileSignUpPageState extends State<MobileSignUpPage> {
+  MobileSignUpControlle mobileSignUpControlle = Get.put(
+    MobileSignUpControlle(),
+  );
   final mobilenumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -90,21 +95,30 @@ class _MobileSignUpPageState extends State<MobileSignUpPage> {
               SizedBox(
                 height: 5.h,
               ),
-              Container(
-                height: 7.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2.pt),
-                  color: Color(0XFFEE6F57),
-                ),
-                child: Center(
-                  child: Text(
-                    'Suivant',
-                    style: TextStyle(color: Colors.white, fontSize: 20.sp),
+              GestureDetector(
+                onTap: () {
+                  mobileSignUpControlle.navigatesignupPage();
+                },
+                child: Container(
+                  height: 7.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2.pt),
+                    color: Color(0XFFEE6F57),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Suivant',
+                      style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                    ),
                   ),
                 ),
               ),
-              Text("En poursuivant votre navigation sur l’application, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.")
+              SizedBox(
+                height: 2.h,
+              ),
+              Text(
+                  "En poursuivant votre navigation sur l’application, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.")
             ],
           ),
         ),
