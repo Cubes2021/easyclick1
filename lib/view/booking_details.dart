@@ -1,5 +1,6 @@
-import 'package:easyclick1/view/booking.dart';
+import 'package:easyclick1/controller/booking_details_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BookingDetailPage extends StatelessWidget {
@@ -8,6 +9,7 @@ class BookingDetailPage extends StatelessWidget {
     'Professional has not completed the service',
     'Need help with other issues',
   ];
+  DetailPageCOntroller detailPageCOntroller = Get.put(DetailPageCOntroller());
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,9 @@ class BookingDetailPage extends StatelessWidget {
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          detailPageCOntroller.navigate();
+                        },
                         icon: Icon(
                           Icons.arrow_back,
                           color: Color(0XFFEE6F57),
@@ -38,13 +42,7 @@ class BookingDetailPage extends StatelessWidget {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Pest Control',
-                            style: TextStyle(color: Color(0XFF1F3C88), fontWeight: FontWeight.bold, fontSize: 20.sp),
-                          ),
-                          Text('Fri 02 June 2021 at 11:30 am')
-                        ],
+                        children: [Text('Vendredi 02 Juin 2021 à 11h30 ')],
                       )
                     ],
                   ),

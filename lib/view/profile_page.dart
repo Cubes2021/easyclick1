@@ -1,11 +1,19 @@
+import 'package:easyclick1/controller/profile_controller.dart';
 import 'package:easyclick1/view/edit_profile.dart';
-import 'package:easyclick1/widgets/bottom_bar.dart';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
-
+  ProfileController profileController = Get.put(ProfileController());
+  List icons = [
+    Icon(Icons.help_outline_outlined, color: Color(0XFFEE6F57), size: 25.sp),
+    Icon(Icons.card_travel_outlined, color: Color(0XFFEE6F57), size: 25.sp),
+    Icon(Icons.account_balance_wallet_outlined, color: Color(0XFFEE6F57), size: 25.sp),
+    Icon(Icons.info_outline_rounded, color: Color(0XFFEE6F57), size: 25.sp),
+  ];
+  List name = ['Aide', 'Mes réservations', 'Mes méthodes de paiement', 'A propos de EasyClic'];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,21 +37,14 @@ class ProfilePage extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 1.5.h,
+                      height: 3.h,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => EditProfile(),
-                          ),
-                        );
-                      },
+                      onTap: () {},
                       child: Row(
                         children: [
                           CircleAvatar(
-                            radius: 5.pt,
+                            radius: 4.pt,
                             backgroundImage: AssetImage('assets/images/service.png'),
                           ),
                           SizedBox(
@@ -70,63 +71,22 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Column(
-              children: [
-                ListTile(
+              children: List.generate(
+                name.length,
+                (index) => ListTile(
                   minVerticalPadding: 0.3.h,
-                  onTap: () {},
-                  leading: Icon(Icons.help_outline_outlined, color: Color(0XFFEE6F57), size: 25.sp),
+                  onTap: () {
+                    profileController.navigate();
+                  },
+                  leading: icons[index],
                   title: Text(
-                    'Aide',
+                    name[index],
                     style: TextStyle(fontSize: 17.sp),
                   ),
-                  trailing: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_forward_ios_outlined),
-                  ),
+                  trailing: Icon(Icons.arrow_forward_ios_outlined),
                 ),
-                ListTile(
-                  onTap: () {},
-                  minVerticalPadding: 0.3.h,
-                  leading: Icon(Icons.card_travel_outlined, color: Color(0XFFEE6F57), size: 25.sp),
-                  title: Text(
-                    'Mes réservations',
-                    style: TextStyle(fontSize: 17.sp),
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.arrow_forward_ios_outlined),
-                  ),
-                ),
-                ListTile(
-                  onTap: () {},
-                  minVerticalPadding: 0.3.h,
-                  leading: Icon(Icons.account_balance_wallet_outlined, color: Color(0XFFEE6F57), size: 25.sp),
-                  title: Text(
-                    'Mes méthodes de paiement',
-                    style: TextStyle(fontSize: 17.sp),
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.arrow_forward_ios_outlined),
-                  ),
-                ),
-                ListTile(
-                  onTap: () {},
-                  minVerticalPadding: 0.3.h,
-                  leading: Icon(Icons.info_outline_rounded, color: Color(0XFFEE6F57), size: 25.sp),
-                  title: Text(
-                    'A propos de EasyClic',
-                    style: TextStyle(fontSize: 17.sp),
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.arrow_forward_ios_outlined),
-                  ),
-                ),
-              ],
-            )
+              ),
+            ),
           ],
         ),
       ),

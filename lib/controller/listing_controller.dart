@@ -1,3 +1,4 @@
+import 'package:easyclick1/view/cart_page.dart';
 import 'package:get/get.dart';
 
 class ListingController extends GetxController {
@@ -15,7 +16,11 @@ class ListingController extends GetxController {
     }
   }
 
-  void resetcart() {}
+  void navigatePage() {
+    Get.to(
+      CartPage(),
+    );
+  }
 
   @override
   void update([List<Object>? ids, bool condition = true]) {

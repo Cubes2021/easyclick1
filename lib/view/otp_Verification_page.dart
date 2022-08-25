@@ -1,7 +1,9 @@
+import 'package:easyclick1/controller/otpverification.dart';
 import 'package:easyclick1/view/home_page.dart';
 import 'package:easyclick1/widgets/custom_button.dart';
 import 'package:easyclick1/widgets/textButton.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
@@ -14,6 +16,13 @@ class OTPVerificationPage extends StatefulWidget {
 
 class _OTPVerificationPageState extends State<OTPVerificationPage> {
   OtpFieldController oTPcode = OtpFieldController();
+  OTPVerification otpVerification = Get.put(OTPVerification());
+  var code;
+  @override
+  void initState() {
+    code = oTPcode;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +36,9 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
               Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      otpVerification.previousPage();
+                    },
                     icon: Icon(
                       Icons.arrow_back,
                       color: Color(0XFFEE6F57),
@@ -53,12 +64,13 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                 height: 1.h,
               ),
               OTPTextField(
+                style: TextStyle(color: Colors.black),
                 keyboardType: TextInputType.number,
                 width: double.infinity,
                 fieldWidth: 15.w,
                 margin: EdgeInsets.symmetric(horizontal: 3.w),
                 fieldStyle: FieldStyle.box,
-                contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
+                contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
                 otpFieldStyle: OtpFieldStyle(
                   backgroundColor: Color(0XFFEEEEEE),
                 ),
@@ -88,12 +100,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
               CustomButton(
                 text: 'Verifier',
                 ontap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePage(),
-                    ),
-                  );
+                  otpVerification.verifyOTP();
                 },
               )
             ],

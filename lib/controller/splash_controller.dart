@@ -7,7 +7,13 @@ import '../view/welcome_view.dart';
 class SplashController extends GetxController {
   @override
   void onInit() {
-    // TODO: implement onInit
-    Timer(Duration(seconds: 3), () => Get.put(() => WelcomeScreen()));
+    Timer(
+      Duration(seconds: 3),
+      () => Get.offAll(
+        WelcomeScreen(),
+      ),
+    );
+    super.onInit();
+    update();
   }
 }

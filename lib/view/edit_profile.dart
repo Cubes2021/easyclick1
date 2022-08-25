@@ -1,7 +1,9 @@
+import 'package:easyclick1/controller/profile_update_controller.dart';
 import 'package:easyclick1/widgets/custom_button.dart';
 import 'package:easyclick1/widgets/textButton.dart';
 import 'package:easyclick1/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class EditProfile extends StatefulWidget {
@@ -12,6 +14,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  ProfileUpdateController profileUpdateController = Get.put(ProfileUpdateController());
   final name = TextEditingController();
   final email = TextEditingController();
   final phonenumber = TextEditingController();
@@ -25,7 +28,7 @@ class _EditProfileState extends State<EditProfile> {
               children: [
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    profileUpdateController.navigate();
                   },
                   icon: Icon(
                     Icons.arrow_back,
@@ -104,7 +107,9 @@ class _EditProfileState extends State<EditProfile> {
               text: 'Annuler',
               color: Color(0XFF1F3C88),
               textStyle: TextStyle(color: Color(0XFF1F3C88), fontWeight: FontWeight.w600),
-              onpressed: () {},
+              onpressed: () {
+                profileUpdateController.navigate();
+              },
             )
           ],
         ),

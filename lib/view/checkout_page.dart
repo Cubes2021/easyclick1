@@ -11,7 +11,6 @@ class CheckOutPage extends StatefulWidget {
 }
 
 class _CheckOutPageState extends State<CheckOutPage> {
-  var isSelected = 0;
   CheckOutController checkOutController = Get.put(CheckOutController());
 
   @override
@@ -151,8 +150,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
               color: Colors.grey.shade200,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 3.w),
+              padding: EdgeInsets.symmetric(horizontal: 3.7.w),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Paiement',
@@ -161,32 +161,30 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   SizedBox(
                     height: 2.h,
                   ),
-                  Obx(
-                    () => RadioListTile(
-                      value: 1,
-                      groupValue: checkOutController.isSelected,
-                      activeColor: checkOutController.isSelected == 1 ? Color(0XFFEE6F57) : Color(0XFFF5F5F5),
-                      title: Text('Apple   / Google Pay\nPaiement en un clic'),
-                      onChanged: (Object? value) {
-                        checkOutController.RadioSelected(
-                          RxInt(1),
-                        );
-                      },
-                    ),
+                  RadioListTile(
+                    contentPadding: EdgeInsets.only(right: 10.w),
+                    value: 1,
+                    groupValue: checkOutController.isSelected,
+                    activeColor: Colors.black,
+                    title: Text('Apple   / Google Pay\nPaiement en un clic'),
+                    selected: checkOutController.isSelected,
+                    onChanged: (bool) {
+                      checkOutController.RadioSelected();
+                    },
                   ),
-                  Obx(
-                    () => RadioListTile(
-                      value: 2,
-                      groupValue: checkOutController.isSelected,
-                      onChanged: (Object? value) {
-                        checkOutController.RadioSelected(
-                          RxInt(2),
-                        );
-                      },
-                      selectedTileColor: checkOutController.isSelected == 2 ? Color(0XFFEE6F57) : Color(0XFFF5F5F5),
-                      activeColor: checkOutController.isSelected == 2 ? Color(0XFFEE6F57) : Color(0XFFF5F5F5),
-                      title: Text('Carte de crédit\n2345 xxxx xxxx 6789'),
-                    ),
+                  SizedBox(
+                    height: 1.h,
+                  ),
+                  RadioListTile(
+                    contentPadding: EdgeInsets.only(right: 10.w),
+                    value: 2,
+                    groupValue: checkOutController.isSelected,
+                    onChanged: (bool) {
+                      checkOutController.RadioSelected();
+                    },
+                    selected: checkOutController.isSelected,
+                    activeColor: Colors.black,
+                    title: Text('Carte de crédit\n2345 xxxx xxxx 6789'),
                   ),
                   SizedBox(
                     height: 4.h,
@@ -215,7 +213,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
               ),
             ),
             SizedBox(
-              height: 12.h,
+              height: 17.h,
             ),
             Divider(
               thickness: 0.2.h,
@@ -226,47 +224,52 @@ class _CheckOutPageState extends State<CheckOutPage> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 2.5.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Total',
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          color: Color(0XFF1F3C88),
-                        ),
-                      ),
-                      Text(
-                        ' 20€',
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XFF1F3C88),
-                        ),
-                      ),
-                    ],
-                  ),
-                  GestureDetector(
-                    child: Container(
-                      height: 5.h,
-                      width: 25.w,
-                      decoration: BoxDecoration(
-                        color: Color(0XFFEE6F57),
-                        borderRadius: BorderRadius.circular(3.3.pt),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Confirmer',
+              child: GestureDetector(
+                onTap: () {
+                  checkOutController.navigate();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Total',
                           style: TextStyle(
-                            color: Colors.white,
+                            fontSize: 20.sp,
+                            color: Color(0XFF1F3C88),
+                          ),
+                        ),
+                        Text(
+                          ' 20€',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0XFF1F3C88),
+                          ),
+                        ),
+                      ],
+                    ),
+                    GestureDetector(
+                      child: Container(
+                        height: 5.h,
+                        width: 25.w,
+                        decoration: BoxDecoration(
+                          color: Color(0XFFEE6F57),
+                          borderRadius: BorderRadius.circular(3.3.pt),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Confirmer',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

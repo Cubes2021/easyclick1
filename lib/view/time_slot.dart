@@ -1,7 +1,9 @@
+import 'package:easyclick1/controller/timeslot_controller.dart';
 import 'package:easyclick1/widgets/custom_button.dart';
 import 'package:easyclick1/widgets/textButton.dart';
 import 'package:easyclick1/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class TimeSlotPage extends StatefulWidget {
@@ -12,6 +14,7 @@ class TimeSlotPage extends StatefulWidget {
 }
 
 class _TimeSlotPageState extends State<TimeSlotPage> {
+  TimeController timeController = Get.put(TimeController());
   final date = TextEditingController();
   final hours = TextEditingController();
   @override
@@ -117,30 +120,33 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
                     ),
                   ),
                   SizedBox(height: 40.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Total',
-                            style: TextStyle(
-                              fontSize: 20.sp,
-                              color: Color(0XFF1F3C88),
+                  GestureDetector(
+                    onTap: () {
+                      timeController.navigate();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Total',
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                color: Color(0XFF1F3C88),
+                              ),
                             ),
-                          ),
-                          Text(
-                            ' 20€',
-                            style: TextStyle(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0XFF1F3C88),
+                            Text(
+                              ' 20€',
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0XFF1F3C88),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      GestureDetector(
-                        child: Container(
+                          ],
+                        ),
+                        Container(
                           height: 5.h,
                           width: 25.w,
                           decoration: BoxDecoration(
@@ -156,8 +162,8 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 1.5.h,

@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({required this.TextEditingController, required this.string, this.suffixIcon, this.suffixIconcolor, this.prefixIcon, this.prefixIconcolor, this.Height});
+  CustomTextField(
+      {required this.TextEditingController,
+      required this.string,
+      this.suffixIcon,
+      this.suffixIconcolor,
+      this.prefixIcon,
+      this.prefixIconcolor,
+      this.Height,
+      this.textStyle});
   final TextEditingController;
+  final TextStyle? textStyle;
   final String? string;
   final Widget? suffixIcon;
   final Widget? prefixIcon;

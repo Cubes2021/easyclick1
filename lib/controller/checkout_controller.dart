@@ -1,11 +1,18 @@
+import 'package:easyclick1/view/booking.dart';
 import 'package:get/get.dart';
 
 class CheckOutController extends GetxController {
-  RxInt isSelected = 0.obs;
+  bool isSelected = false;
 
-  RadioSelected(RxInt value) {
-    isSelected = value;
-    print(isSelected.toString());
+  RadioSelected() {
+    isSelected = true;
+    print(isSelected);
+  }
+
+  void navigate() {
+    Get.to(
+      BookingPage(),
+    );
   }
 
   @override

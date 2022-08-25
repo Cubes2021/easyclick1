@@ -1,5 +1,6 @@
 import 'package:easyclick1/view/booking.dart';
 import 'package:easyclick1/view/booking_details.dart';
+import 'package:easyclick1/view/home_page.dart';
 import 'package:easyclick1/view/profile_page.dart';
 import 'package:easyclick1/view/review_page.dart';
 import 'package:easyclick1/view/search_page.dart';
@@ -19,6 +20,7 @@ class _BottomBarState extends State<BottomBar> {
   List<String> icon = ['assets/images/search.png', 'assets/images/notes.png', 'assets/images/Frame.png'];
 
   List<Widget> Screen = [
+    // HomePage(),
     SearchPage(),
     BookingPage(),
     ProfilePage(),
@@ -32,7 +34,9 @@ class _BottomBarState extends State<BottomBar> {
         width: double.infinity,
         height: 8.h,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 6.w),
+          padding: EdgeInsets.symmetric(
+            horizontal: 4.w,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
@@ -73,49 +77,3 @@ class _BottomBarState extends State<BottomBar> {
     );
   }
 }
-
-/*
-
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ServiceListingPage(),
-                        ),
-                      );
-                    },
-                    icon: Image.asset('assets/images/notes.png'),
-                  ),
-                  Text(
-                    'Réservations',
-                    style: TextStyle(
-                      color: Color(0XFF1F3C88),
-                    ),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfilePage(),
-                        ),
-                      );
-                    },
-                    icon: Image.asset('assets/images/Frame.png'),
-                  ),
-                  Text(
-                    'Profil',
-                    style: TextStyle(
-                      color: Color(0XFF1F3C88),
-                    ),
-                  )
-                ],
-              ),
- */

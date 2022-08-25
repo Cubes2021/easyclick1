@@ -1,5 +1,7 @@
+import 'package:easyclick1/controller/sub_catagories.dart';
 import 'package:easyclick1/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SubCatagariesPage extends StatefulWidget {
@@ -10,6 +12,7 @@ class SubCatagariesPage extends StatefulWidget {
 }
 
 class _SubCatagariesPageState extends State<SubCatagariesPage> {
+  SubCatagoriesController subCatagoriesController = Get.put(SubCatagoriesController());
   final search = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,9 @@ class _SubCatagariesPageState extends State<SubCatagariesPage> {
               Row(
                 children: [
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        subCatagoriesController.navigate();
+                      },
                       icon: Icon(
                         Icons.arrow_back,
                         color: Color(0XFFEE6F57),

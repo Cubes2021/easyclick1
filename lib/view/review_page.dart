@@ -1,11 +1,14 @@
+import 'package:easyclick1/controller/review_controller.dart';
 import 'package:easyclick1/view/home_page.dart';
 import 'package:easyclick1/widgets/custom_button.dart';
 import 'package:easyclick1/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ReviewPage extends StatelessWidget {
   final comments = TextEditingController();
+  ReviewController reviewController = Get.put(ReviewController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,9 @@ class ReviewPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 3.h,
+                      ),
                       Text(
                         'Revue',
                         style: TextStyle(
@@ -127,13 +133,6 @@ class ReviewPage extends StatelessWidget {
                       SizedBox(
                         height: 2.h,
                       ),
-                      Text(
-                        'Overall',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                        ),
-                      ),
                       Row(
                         children: List.generate(
                           5,
@@ -143,72 +142,31 @@ class ReviewPage extends StatelessWidget {
                             size: 25.sp,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text(
-                        'Politeness',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                        ),
-                      ),
-                      Row(
-                        children: List.generate(
-                          5,
-                          (index) => Icon(
-                            Icons.star_border_outlined,
-                            color: Colors.grey.shade300,
-                            size: 25.sp,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text(
-                        'Job Quality',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                        ),
-                      ),
-                      Row(
-                        children: List.generate(
-                          5,
-                          (index) => Icon(
-                            Icons.star_border_outlined,
-                            color: Colors.grey.shade300,
-                            size: 25.sp,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text('Vos Commentaires'),
-                      SizedBox(
-                        height: 1.5.h,
-                      ),
-                      CustomTextField(
-                        TextEditingController: comments,
-                        string: 'write your review',
                       ),
                       SizedBox(
                         height: 2.h,
                       ),
+                      Text(
+                        'Vos Commentaires',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      CustomTextField(
+                        textStyle: TextStyle(fontWeight: FontWeight.w700),
+                        Height: 15.h,
+                        TextEditingController: comments,
+                        string: 'write your review',
+                      ),
+                      SizedBox(
+                        height: 2.5.h,
+                      ),
                       CustomButton(
-                        text: 'Envoyer',
-                        ontap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        },
-                      )
+                          text: 'Envoyer',
+                          ontap: () {
+                            reviewController.navigate();
+                          })
                     ],
                   ),
                 ),

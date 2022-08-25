@@ -28,14 +28,13 @@ class _CartPageState extends State<CartPage> {
               Row(
                 children: [
                   IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Color(0XFFEE6F57),
-                        size: 20.sp,
-                      )),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Color(0XFFEE6F57),
+                      size: 20.sp,
+                    ),
+                  ),
                   Text(
                     'Récapitulatif',
                     style: TextStyle(color: Color(0XFF1F3C88), fontWeight: FontWeight.bold, fontSize: 17.sp),
